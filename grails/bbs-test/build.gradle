@@ -1,0 +1,40 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    drivers = ['htmlunit', 'ie', 'firefox']
+}
+
+configurations {
+    testCompile.transitive = true
+}
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:2.2.2'
+
+    def gebVersion = "0.9.1"
+    def seleniumVersion = "2.35.0"
+
+    // If using Spock, need to depend on geb-spock
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+
+    // Need a driver implementation
+    drivers.each {
+        testCompile "org.seleniumhq.selenium:selenium-$it-driver:$seleniumVersion"
+    }
+    testRuntime "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+}
+
+drivers.each { driver ->
+    task "test${driver.capitalize()}"(type: Test) {
+        systemProperties "geb.env": driver
+        systemProperties "geb.build.reportsDir": reporting.file("$name/geb")
+        testReportDir = reporting.file("$name/tests")
+        testResultsDir = file("$buildDir/test-results/$name")
+    }
+}
