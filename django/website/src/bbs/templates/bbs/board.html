@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+{% load i18n %}
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bbs.css" >
+  <title>{{ board.name }}</title>
+
+  <script type="text/javascript">
+  <!--
+
+  function validate() {
+      var title = document.form.title.value;
+      var message = document.form.message.value;
+      if (title == "" || message == "") {
+          alert("{% trans "Enter the required fields" %}");
+          return false;
+      }
+      return true;
+  }
+
+  // -->
+  </script>
+</head>
+<body class="main">
+
+  <div id="header" align="right">
+    <a class=sidebar href="/bbs/main/">top</a>
+  </div>
+
+  <div id="contents">
+    <div class="section">
+      <h1 align="center">{{ board.name }}</h1>
+    </div>
+    <form action="/bbs/{{ board.id }}/add/" method="post"
+      name="form" onsubmit="return validate()">{% csrf_token %}
+      <table align="center">
+        <tbody>
+          <tr>
+            <td class="item">{% trans "Title" %}</td>
+            <td><input type="text" name="title"> <input
+              type="submit" name="submit" value="{% trans "Create a new thread" %}">
+            </td>
+          </tr>
+          <tr>
+            <td class="item">{% trans "Name" %}</td>
+            <td><input type="text" name="username"></td>
+          </tr>
+          <tr>
+            <td class="item">{% trans "Comment" %}</td>
+            <td><textarea name="message" rows="10" cols="60"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <hr>
+    <p>
+    {% for thread in thread_list %}
+      <a href="/bbs/{{ board.id }}/{{ thread.id }}/" target="mainFrame">
+        {{ forloop.counter }}: {{ thread.title }} ({{ thread.response_count }})
+      </a>
+      <br>
+    {% endfor %}
+    </p>
+  </div>
+
+  <div id="footer" align="right">
+    <a class=sidebar href="/bbs/main/">top</a>
+  </div>
+
+</body>
+</html>
