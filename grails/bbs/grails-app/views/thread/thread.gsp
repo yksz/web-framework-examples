@@ -4,24 +4,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" href="${resource(dir: 'css', file: 'bbs.css')}" type="text/css">
   <title>${thread.title}</title>
-
   <script type="text/javascript">
   <!--
-
-  function validate() {
-      var message = document.form.message.value;
-      if (message == "") {
-          alert("<g:message code="bbs.error.enter.fields" />");
-          return false;
-      }
-      return true;
-  }
-
+    function validate() {
+        var message = document.form.message.value;
+        if (message == "") {
+            alert("<g:message code="bbs.error.enter.fields" />");
+            return false;
+        }
+        return true;
+    }
   // -->
   </script>
 </head>
 <body class="main">
-
   <div id="header" align="right">
     <a class=sidebar href="/bbs/${board.id}/">board</a>
     |
@@ -48,13 +44,15 @@
           <tbody>
             <tr>
               <td class="item"><g:message code="bbs.response.username" /></td>
-              <td><input type="text" name="username">
-                  <input type="submit" name="submit" value="<g:message code="bbs.response.post" />">
+              <td>
+                <input type="text" name="username">
+                <input type="submit" name="submit" value="<g:message code="bbs.response.post" />">
               </td>
             </tr>
             <tr>
               <td class="item"><g:message code="bbs.response.comment" /></td>
-              <td><textarea name="message" rows="10" cols="60"></textarea>
+              <td>
+                <textarea name="message" rows="10" cols="60"></textarea>
               </td>
             </tr>
           </tbody>
@@ -68,6 +66,5 @@
     |
     <a class=sidebar href="/bbs/main/">top</a>
   </div>
-
 </body>
 </html>

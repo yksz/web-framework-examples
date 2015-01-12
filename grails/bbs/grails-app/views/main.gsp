@@ -6,7 +6,6 @@
   <title><g:message code="bbs.main.page.title" /></title>
 </head>
 <body>
-
   <div id="header">
   </div>
 
@@ -19,6 +18,5 @@
 
   <div id="footer">
   </div>
-
 </body>
 </html>

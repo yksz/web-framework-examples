@@ -6,13 +6,11 @@
   <title><g:message code="bbs.menu.page.title" /></title>
 </head>
 <body id="menu">
-
-<g:each in="${bbs.Board.list()}" status="i" var="board">
-  <a class=menu href="/bbs/${board.id}" target="mainFrame">
-    ${board.name}
-  </a>
-  <br>
-</g:each>
-
+  <g:each in="${bbs.Board.list()}" status="i" var="board">
+    <a class=menu href="/bbs/${board.id}" target="mainFrame">
+      ${board.name}
+    </a>
+    <br>
+  </g:each>
 </body>
 </html>
