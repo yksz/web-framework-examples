@@ -7,13 +7,11 @@
   <title>{% trans "BBS Menu" %}</title>
 </head>
 <body id="menu">
-
 {% for board in board_list %}
   <a class=menu href="/bbs/{{ board.id }}/" target="mainFrame">
     {{ board.name }}
   </a>
   <br>
 {% endfor %}
-
 </body>
 </html>

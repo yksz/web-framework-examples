@@ -5,24 +5,20 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bbs.css" >
   <title>{{ thread.title }}</title>
-
   <script type="text/javascript">
   <!--
-
-  function validate() {
-      var message = document.form.message.value;
-      if (message == "") {
-          alert("{% trans "Enter the required fields" %}");
-          return false;
-      }
-      return true;
-  }
-
+    function validate() {
+        var message = document.form.message.value;
+        if (message == "") {
+            alert("{% trans "Enter the required fields" %}");
+            return false;
+        }
+        return true;
+    }
   // -->
   </script>
 </head>
 <body class="main">
-
   <div id="header" align="right">
     <a class=sidebar href="/bbs/{{ board.id }}/">board</a>
     |
@@ -49,13 +45,15 @@
           <tbody>
             <tr>
               <td class="item">{% trans "Name" %}</td>
-              <td><input type="text" name="username"> <input
-                type="submit" name="submit" value="{% trans "Post" %}">
+              <td>
+                <input type="text" name="username">
+                <input type="submit" name="submit" value="{% trans "Post" %}">
               </td>
             </tr>
             <tr>
               <td class="item">{% trans "Comment" %}</td>
-              <td><textarea name="message" rows="10" cols="60"></textarea>
+              <td>
+                <textarea name="message" rows="10" cols="60"></textarea>
               </td>
             </tr>
           </tbody>
@@ -69,6 +67,5 @@
     |
     <a class=sidebar href="/bbs/main/">top</a>
   </div>
-
 </body>
 </html>
